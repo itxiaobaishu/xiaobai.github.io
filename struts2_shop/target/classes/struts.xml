@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	<constant name="struts.custom.i18n.resources" value="aa"></constant>
+	<constant name="struts.enable.DynamicMethodInvocation" value="false"/>
+	<package name="default" namespace="/" extends="struts-default">
+		<action name = "shopList" class = "com.shop.action.ShopAction" method = "shopList">
+			<result name = "shopList" >/WEB-INF/shop_list.jsp</result>
+		</action>
+		<action name = "shopAdd" class = "com.shop.action.ShopAction" method = "shopAdd">
+			<result name = "shopAdd" >/WEB-INF/shop_add.jsp</result>
+		</action>
+		<action name = "shopAddSuccess" class = "com.shop.action.ShopAction" method = "shopAddSuccess">
+			<result name = "shopAddSuccess" type="redirect">shopList</result>
+		</action>
+		<action name = "shopDelete" class = "com.shop.action.ShopAction" method = "shopDelete">
+			<result name = "shopDelete" type="redirect">shopList</result>
+		</action>
+		<action name = "shopUpdate" class = "com.shop.action.ShopAction" method = "shopUpdate">
+			<result name = "shopUpdate" >/WEB-INF/shop_update.jsp</result>
+		</action>
+		<action name = "shopUpdateSuccess" class = "com.shop.action.ShopAction" method = "shopUpdateSuccess">
+			<result name = "shopUpdateSuccess" type="redirect">shopList</result>
+		</action>
+	</package>
+</struts>
