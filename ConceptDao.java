@@ -58,9 +58,58 @@ public class ConceptDao {
         DBObject obj = new BasicDBObject(map);
 
         exe.insert(dbName, tableName, obj);
-
+        
     }
+    
+    public Long count(String tableName) {
+        return count(tableName, null);
+    }
+    
+    public Long count(String tableName, Map<String, Object> map) {
+        Long count = null;
+        
+        if (map == null) {
 
+            DB db = mongoClient.getDB(dbName);
+            DBCollection collection = db.getCollection(tableName);
+            count = collection.count();
+        }else {
+            
+            DBObject q = new BasicDBObject(map);
+            
+            count = exe.count(dbName, tableName, q);
+        }
+        
+        return count;
+    }
+    
+    public DBObject findOne(String tableName, Map<String, Object> map) {
+        return findOne(tableName, map, null);
+    }
+    //查询一条
+    public DBObject findOne(String tableName, Map<String, Object> map, List<String> list) {
+        
+        DB db = mongoClient.getDB(dbName);
+        DBCollection collection = db.getCollection(tableName);
+        DBObject findOne = null;
+        
+        DBObject q = new BasicDBObject(map);
+        
+        if (list == null) {
+            findOne = collection.findOne(q);
+        }else {
+            
+            DBObject keys = new BasicDBObject();
+            
+            for(String li : list){
+                keys.put(li, 1);
+            }
+            
+            findOne = collection.findOne(q, keys);
+        }
+        return findOne;
+        
+    }
     
     // 查询基础方法
     public List<DBObject> find(String tableName, Map<String, Object> map, List<String> list,
@@ -69,7 +118,7 @@ public class ConceptDao {
         DB db = mongoClient.getDB(dbName);
 
         DBCollection collection = db.getCollection(tableName);
-
+        
         DBObject query = null;
 
         if (map == null) {
@@ -84,7 +133,7 @@ public class ConceptDao {
             if (list == null) {
                 find = collection.find(query).sort(sortField).skip(begin).limit(size);
             } else {
-                BasicDBObject keys = new BasicDBObject();
+                DBObject keys = new BasicDBObject();
                 for (String li : list) {
                     keys.put(li, 1);
                 }
@@ -177,15 +226,20 @@ public class ConceptDao {
 
         Map<String, Object> map1 = new HashMap<String, Object>();
         map1.put("entity", "1");
-        map1.put("initalState", "1");
+//        map1.put("initalState", "1");
+        
+        DBObject findOne = cdi.findOne("report", map1);
+        
+//        System.out.println(findOne);
 
         List<DBObject> list = cdi.find("report", map1, list1, "weight", 1, 0, Integer.MAX_VALUE);
 
         for (DBObject li : list) {
 
-            System.out.println(li);
+//            System.out.println(li);
         }
-
+        Long count = cdi.count("report");
+        System.out.println(count);
         // cdi.addPage("concept", "article", map);
 
     }
