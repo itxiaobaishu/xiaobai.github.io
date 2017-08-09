@@ -34,11 +34,8 @@ h2 {
 }
 
 .tm-border {
-  height: 250px;
-  weight: 250px;
 	border: 5px solid #fff;
 	box-shadow: 2px 2px #000;
-  
 }
 
 .shadow {
@@ -51,7 +48,6 @@ h2 {
 
 .white {
   color: #fff;
-  padding-bottom: 0;
 }
 
 .about,.skills,
@@ -114,7 +110,7 @@ h2 {
   width: 8px;
   height: 8px;
   position: absolute;
-  ftm-border-radius: 8px;
+  border-radius: 8px;
   top: 5px;
   left: 5px; }
 
@@ -190,7 +186,6 @@ header hr {
 }
 .education h5 {
   display: inline-block;
-  margin-top: 0!important;
 }
 .education span {
   padding-right: 10px;
