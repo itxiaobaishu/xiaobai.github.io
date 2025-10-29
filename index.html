@@ -1,151 +1,156 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="utf-8">
-	<title>itxiaobaishu</title>
-	<meta http-equiv="X-UA-Compatible" content="IE=Edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="keywords" content="">
-	<meta name="description" content="">
-
-	<!-- stylesheet css -->
-	<link rel="stylesheet" href="css/bootstrap.min.css">
-	<link rel="stylesheet" href="css/font-awesome.min.css">
-	<link rel="stylesheet" href="css/templatemo-blue.css">
+<meta charset="UTF-8">
+<meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
+<title>forever love</title>
 </head>
-<body data-spy="scroll" data-target=".navbar-collapse">
 
-<!-- preloader section -->
-<div class="preloader">
-	<div class="sk-spinner sk-spinner-wordpress">
-       <span class="sk-inner-circle"></span>
-     </div>
+<script src="js/lib/jquery.min.js" type="text/javascript"></script>
+<script src="js/lib/jquery.fireworks.js" type="text/javascript"></script>
+
+<style type="text/css">
+*{ -webkit-tap-highlight-color:rgba(0,0,0,0); -webkit-box-sizing: border-box; box-sizing: border-box; }
+html{ width: 100%; height: 100%; }
+body{ max-width: 600px; margin: 0 auto; background: #0b3443; color: #f0f0f0;}
+.share_img{ width: 0; height: 0; overflow: hidden; opacity: 0; }
+.content{ padding: 80px 20px;}
+.text_wrapper{ display: -webkit-box; display: flex; }
+.text_wrapper .text{ padding-top: 20px; padding-left: 20px; }
+.hide{ display: none !important; }
+p{ margin: 0; }
+.btn-groups{ padding-right: 20px; text-align: center; }
+.heart-btn{ display: inline-block; animation: breath 0.8s linear 0s infinite both; -webkit-animation: breath 0.8s linear 0s infinite both; }
+.btn{ position: relative; display: inline-block; width: 60px; height: 60px; margin: 0 30px; transform: rotate(45deg); -webkit-transform: rotate(45deg);}
+.btn span{ display: block; width: 100%; height: 100%; line-height: 60px; margin-top: -10px; margin-left: -10px; text-align: center; transform: rotate(-45deg); -webkit-transform: rotate(-45deg); }
+.btn-a{ background: #d26ae5; }
+.btn-b{ background: #c9c9c9; }
+.btn-a:before{ content: ''; position: absolute; display: block; width: 30px; height: 60px; background: #d26ae5; left: -29px; top: 0; border-top-left-radius: 60px; border-bottom-left-radius: 60px; }
+.btn-a:after{ content: ''; position: absolute; display: block; width: 60px; height: 30px; background: #d26ae5; left: 0; top: -29px; border-top-left-radius: 60px; border-top-right-radius: 60px;}
+.btn-b:before{ content: ''; position: absolute; display: block; width: 30px; height: 60px; background: #c9c9c9; left: -29px; top: 0; border-top-left-radius: 60px; border-bottom-left-radius: 60px; }
+.btn-b:after{ content: ''; position: absolute; display: block; width: 60px; height: 30px; background: #c9c9c9; left: 0; top: -29px; border-top-left-radius: 60px; border-top-right-radius: 60px;}
+.container{  }
+.container .mask{ position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.3); }
+.container .modal{ width: 80%; height: 160px; position: absolute; top: 50%; left: 50%; padding: 20px 15px; border-radius: 5px; transform: translate(-50%, -70%); -webkit-transform: translate(-50%，-70%); background: #f3f3f3;}
+.container .modal p{ margin-top: 20px; margin-bottom: 20px; font-size: 16px; color: #353535; text-align: center;}
+.confirm{ display: block; width: 120px; height: 40px; margin: 0 auto; border: none; font-size: 16px; border-radius: 5px; color: #ffffff; background: #f45cae; }
+.type_words{ padding: 12px 20px; }
+@keyframes breath {
+	0% {
+		transform: scale3d(1,1,1);
+		-webkit-transform: scale3d(1,1,1);
+		transform-origin: 50% 50%;
+	}
+	50%{
+		transform: scale3d(1.02,1.02,1.02);
+		-webkit-transform: scale3d(1.02,1.02,1.02);
+		transform-origin: 50% 50%;
+	}
+	100%{
+		transform: scale3d(1,1,1);
+		-webkit-transform: scale3d(1,1,1);
+		transform-origin: 50% 50%;
+	}
+}
+</style>
+
+<script type="text/javascript">
+$(function() {
+	$('#yes').click(function(event) {
+		modal('我就知道小姐姐您一定会愿意的。(^_^)', function() {
+			$('.page_one').addClass('hide');
+			$('.page_two').removeClass('hide');
+			// typeWrite();
+			fireworks();
+			
+		});
+	});
+	$('#no').click(function(event) {
+		modal('明人不说暗话！', A);
+	});
+});
+
+function A() {
+	modal('我喜欢你！', B);
+}
+
+function B() {
+	modal('我知道你在等我这一句话', C);
+}
+
+function C() {
+	modal('请您不要拒绝我', J);
+}
+
+function J() {
+	modal('爱你。么么哒！', function() {
+		fireworks();
+	});
+}
+
+function fireworks() {
+	$('.page_one').addClass('hide');
+	$('.page_two').removeClass('hide');
+	$('.page_two').fireworks({ 
+	  sound: false, 
+	  opacity: 0.9, 
+	  width: '100%', 
+	  height: '100%' 
+	});	
+}
+
+function modal(content, callback) {
+	var tpl = '<div class="container">'+
+							'<div class="mask"></div>'+
+							'<div class="modal">'+
+								'<p>'+ content +'</p>'+
+								'<button type="button" id="confirm" class="confirm">确定</button>'+
+							'</div>'+
+						'</div>';
+	$('body').append(tpl);
+	$(document).on('click', '.confirm', function() {
+		$('.container').remove();
+		callback();
+	});
+}
+
+var myWords = '有人说，人的一生会遇到2920万人，而两个人相爱的概率只有0.000049。在这茫茫人海中，两个人能相遇就值得感激，能相爱更是一种难得。所以，我很庆幸上天让我遇见了你。我希望有个如你一般的人，能看完我写过的所有状态，读完我所有的日志，看完我从小到大的照片，试着听我喜欢的歌。如果可以，甚至陪我去我喜欢的地方，只想弥补错过你的青春。';
+var x = 0;
+var speed = 150;
+var current = 0;
+function typeWrite(){
+	$('.type_words').html(myWords.substring(0, x++)+'_');
+	var timer = setTimeout("typeWrite()", speed);
+	if (x == myWords.length) {
+		x = myWords.length;
+		clearTimeout(timer)
+	}
+}
+
+</script>
+<body>
+
+<div class="share_img"><img src="images/a8b.png" alt=""></div>
+
+<div class="page_one">
+	<div class="content">
+		<div class="text_wrapper">
+			<img src="images/a8.png" alt="">
+			<div class="text">
+				小姐姐，我好喜欢你，你愿意做我女朋友吗？
+			</div>
+		</div>
+	</div>
+	<div class="btn-groups">
+		<div class="heart-btn">
+			<div id="yes" class="btn btn-a"><span>愿意</span></div>
+		</div>
+		<div id="no" class="btn btn-b"><span>不愿意</span></div>
+	</div>
 </div>
-
-<!-- header section -->
-<header>
-	<div class="container">
-		<div class="row">
-			<div class="col-md-12 col-sm-12">
-				<img src="images/tm-easy-profile.jpg" class="img-responsive img-circle tm-border" alt="templatemo easy profile">
-				<hr>
-				<h1 class="tm-title bold shadow">Hi, I am WangDanYu</h1>
-				<h1 class="white bold shadow">Progress a small step every day</h1>
-			</div>
-		</div>
-	</div>
-</header>
-
-<!-- about and skills section -->
-<section class="container">
-	<div class="row">
-		<div class="col-md-6 col-sm-12">
-			<div class="about">
-				<h2 class="accent">个人简介</h2>
-				<p>对编程有浓厚的兴趣，拥有良好的编程习惯以及较强的自学能力，爱钻研，极度愿意学习新技术；<br/>有良好的沟通能力，组织协调能力，具有很强的团队协作意识；<br/>
-				思维能力清晰，具备独立分析和解决问题的能力，有良好的职业道德和工作态度，工作认真、踏实，责任心和进取心强 </p>
-			</div>
-		</div>
-		<div class="col-md-6 col-sm-12">
-			<div class="skills">
-				<h2 class="white">Ability</h2>
-				<strong>programming concept</strong>
-				<span class="pull-right">85%</span>
-					<div class="progress">
-						<div class="progress-bar progress-bar-primary" role="progressbar" 
-                        aria-valuenow="85" aria-valuemin="0" aria-valuemax="100" style="width: 85%;"></div>
-					</div>
-				<strong>learning ability</strong>
-				<span class="pull-right">90%</span>
-					<div class="progress">
-						<div class="progress-bar progress-bar-primary" role="progressbar" 
-                        aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" style="width: 90%;"></div>
-					</div>
-				<strong>ability to communicate</strong>
-				<span class="pull-right">85%</span>
-					<div class="progress">
-						<div class="progress-bar progress-bar-primary" role="progressbar" 
-                        aria-valuenow="85" aria-valuemin="0" aria-valuemax="100" style="width: 85%;"></div>
-					</div>
-			</div>
-		</div>
-	</div>
-</section>
-
-<section class="container">
-	<div class="row">
-		<div class="col-md-8 col-sm-12">
-			<div class="education">
-				<h2 class="white">专业技能</h2>
-					<div class="education-content">
-						<p class="education-description">熟悉mysql，mongo，oracle，redis等主流数据库，熟练掌握MySQL相关 DDL/DML/DQL操作，熟练使用ETL技术及kettle工具。<br/>熟练使用Linux基本的命令操作、虚拟机及在linux部署项目。<br/>熟练使用Git、Maven等版本控制与项目构建工具，熟练使用 码云/GitHub 进行代码托管。<br/>熟悉前端技术 h5、css3、JavaScript、jQuery、Ajax、Bootstrap。<br/>熟悉Lucene/Solr，熟悉SolrCloud集群的搭建以及SolrJ 的使用，能够基于Solr搭建站内搜索。<br/>熟悉 Nginx 负载均衡与反向代理技术。</p>
-					</div>
-			</div>
-		</div>
-		<div class="col-md-4 col-sm-12">
-			<div class="languages">
-				<h2>Languages</h2>
-					<ul>
-						<li>Java</li>
-						<li>JavaScript / jQuery</li>
-						<li>H5 / CSS3</li>
-						<li>Mongodb / ETL</li>
-					</ul>
-			</div>
-		</div>
-	</div>
-</section>
-
-<!-- contact and experience -->
-<section class="container">
-	<div class="row">
-		<div class="col-md-4 col-sm-12">
-			<div class="contact">
-				<h2>Contact</h2>
-					<p><i class="fa fa-map-marker"></i> China, BeiJing</p>
-					<p><i class="fa fa-phone"></i> 15945498824</p>
-					<p><i class="fa fa-envelope"></i> danyu2017it@gmail.com</p>
-					<p><i class="fa fa-globe"></i> https://itxiaobaishu.github.io/</p>
-			</div>
-		</div>
-		<div class="col-md-8 col-sm-12">
-			<div class="experience">
-				<h2 class="white">工作经历</h2>
-					<div class="experience-content">
-						<h5>学识鸟信息科技有限公司</h5>
-						<p class="education-description">参与项目业务需求讨论，功能模块的开发，单元测试，对现有业务进行技术梳理和代码重构；<br/>
-						负责数据库的导入、导出，数据的迁徙、清洗，数据接口的编写；</p>
-						<h5>天合石油集团</h5>
-						<p class="education-description">主要负责公司内部服务器的日常维护，系统软件的安装调试，公司网站的建设与维护等工作</p>
-					</div>
-			</div>
-		</div>
-	</div>
-</section>
-
-<!-- footer section -->
-<footer>
-	<div class="container">
-		<div class="row">
-			<div class="col-md-12 col-sm-12">
-				<p>Copyright &copy; 2017 Wang Dan Yu.</p>
-				<ul class="social-icons">
-					<li><a href="#" class="fa fa-facebook"></a></li>
-                    <li><a href="#" class="fa fa-google-plus"></a></li>
-					<li><a href="#" class="fa fa-twitter"></a></li>
-					<li><a href="#" class="fa fa-github"></a></li>
-					<li><a href="#" class="fa fa-behance"></a></li>
-				</ul>
-			</div>
-		</div>
-	</div>
-</footer>
-
-<!-- javascript js -->	
-<script src="js/jquery.js"></script>
-<script src="js/bootstrap.min.js"></script>	
-<script src="js/jquery.backstretch.min.js"></script>
-<script src="js/custom.js"></script>
+<div class="page_two hide">
+	<div class="type_words"></div>
+</div>
 
 </body>
 </html>
